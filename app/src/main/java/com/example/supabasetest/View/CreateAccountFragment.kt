@@ -1,4 +1,4 @@
-package com.example.supabasetest
+package com.example.supabasetest.View
 
 import android.os.Bundle
 import android.text.InputType
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import com.example.supabasetest.R
 import com.google.android.material.button.MaterialButton
 
 

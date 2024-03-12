@@ -1,4 +1,4 @@
-package com.example.supabasetest
+package com.example.supabasetest.View
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.supabasetest.R
 import java.util.Timer
 
 class SplashFragment : Fragment() {
