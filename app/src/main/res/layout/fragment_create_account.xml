@@ -82,23 +82,26 @@
         android:id="@+id/passwordEditText"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/showHideButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEditText"
-        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintWidth_percent="0.6"
         android:layout_marginTop="18dp"
         android:hint="Password"
         android:background="@drawable/sh_input"
         android:paddingHorizontal="25dp"
-        android:textColor="@color/blackText"/>
+        android:textColor="@color/blackText"
+        android:inputType="textPassword"/>
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:id="@+id/showHideButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+        app:layout_constraintStart_toEndOf="@id/passwordEditText"
+        app:layout_constraintTop_toTopOf="@+id/passwordEditText"
+        android:backgroundTint="@color/btnBackground"
+        app:cornerRadius="20dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/createButton"

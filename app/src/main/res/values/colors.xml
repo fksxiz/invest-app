@@ -5,4 +5,5 @@
     <color name="blackText">#000000</color>
     <color name="grayText">#4F4F4F</color>
     <color name="btnBackground">#31A062</color>
+    <color name="menuBackground">#DDDDDD</color>
 </resources>

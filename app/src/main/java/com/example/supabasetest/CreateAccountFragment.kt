@@ -10,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import com.google.android.material.button.MaterialButton
 
 
 class CreateAccountFragment : Fragment() {
 
     private lateinit var backButton:ImageButton
+    private lateinit var createButton:MaterialButton
     private lateinit var showHideButton:Button
     private lateinit var passwordEditText:EditText
 
@@ -29,11 +31,13 @@ class CreateAccountFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.apply {
             backButton = findViewById(R.id.backButton)
+            createButton = findViewById(R.id.createButton)
             showHideButton = findViewById(R.id.showHideButton)
             passwordEditText = findViewById(R.id.passwordEditText)
         }
         backButton.setOnClickListener(OnBackClickListener)
         showHideButton.setOnClickListener(OnShowHideClickListener)
+        createButton.setOnClickListener(OnCreateClickListener)
     }
 
     override fun onCreateView(
@@ -48,9 +52,13 @@ class CreateAccountFragment : Fragment() {
         (activity as MainActivity).showFragment(SignUpFragment.newInstance())
     }
 
+    private val OnCreateClickListener = OnClickListener{
+        (activity as MainActivity).showFragment(HomeFragment.newInstance())
+    }
+
     private val OnShowHideClickListener = OnClickListener {
         if(passwordEditText.inputType==1){
-            passwordEditText.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
+            passwordEditText.inputType = 129
         }else{
             passwordEditText.inputType = InputType.TYPE_CLASS_TEXT
         }
