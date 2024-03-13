@@ -1,129 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".View.HomeFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".View.HomeFragment">
 
     <ImageView
         android:id="@+id/MenuImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="31dp"
         android:layout_marginTop="61dp"
-        />
+        android:src="@drawable/ic_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/NotificationImageViev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_notification"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="31dp"
         android:layout_marginTop="61dp"
-        />
+        android:layout_marginEnd="31dp"
+        android:src="@drawable/ic_notification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/WelcomeTextView"
         android:layout_width="0dp"
-        android:layout_marginHorizontal="31dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/dmsansboldres"
-        app:layout_constraintTop_toBottomOf="@id/MenuImageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="31dp"
         android:layout_marginTop="18dp"
+        android:fontFamily="@font/dmsansboldres"
         android:text="Welcome, User."
         android:textColor="@color/blackText"
         android:textSize="34sp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/MenuImageView" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/WelcomeTextView"
-        android:layout_marginVertical="10dp"
-        app:layout_constraintBottom_toTopOf="@id/menuView"
-        >
-        <LinearLayout
+
+        <ListView
+            android:id="@+id/ScrollListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="@color/grayText"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="@color/btnBackground"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="@color/white"/>
-        </LinearLayout>
-    </ScrollView>
+            android:layout_height="0dp"
+            tools:listitem="@layout/news_item"
+            android:layout_margin="4dp"
+            app:layout_constraintBottom_toTopOf="@id/menuView"
+            app:layout_constraintTop_toBottomOf="@id/WelcomeTextView"
+            android:dividerHeight="14dp"
+            android:divider="@android:color/transparent"
+            />
+
 
     <View
         android:id="@+id/menuView"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/menuBackground"
-        />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
         android:id="@+id/homeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/menuView"
-        app:layout_constraintEnd_toStartOf="@id/productImageView"
-        app:layout_constraintTop_toTopOf="@id/menuView"
-        app:layout_constraintBottom_toBottomOf="@id/menuView"
-        android:src="@drawable/ic_active_home"
         android:layout_marginHorizontal="10dp"
-        />
+        android:src="@drawable/ic_active_home"
+        app:layout_constraintBottom_toBottomOf="@id/menuView"
+        app:layout_constraintEnd_toStartOf="@id/productImageView"
+        app:layout_constraintStart_toStartOf="@id/menuView"
+        app:layout_constraintTop_toTopOf="@id/menuView" />
 
     <ImageView
         android:id="@+id/productImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/homeImageView"
-        app:layout_constraintEnd_toStartOf="@id/transactionImageView"
-        app:layout_constraintTop_toTopOf="@id/menuView"
-        app:layout_constraintBottom_toBottomOf="@id/menuView"
-        android:src="@drawable/ic_search"
         android:layout_marginHorizontal="10dp"
-        />
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@id/menuView"
+        app:layout_constraintEnd_toStartOf="@id/transactionImageView"
+        app:layout_constraintStart_toEndOf="@id/homeImageView"
+        app:layout_constraintTop_toTopOf="@id/menuView" />
 
     <ImageView
         android:id="@+id/transactionImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/productImageView"
-        app:layout_constraintEnd_toStartOf="@id/accountImageView"
-        app:layout_constraintTop_toTopOf="@id/menuView"
-        app:layout_constraintBottom_toBottomOf="@id/menuView"
-        android:src="@drawable/ic_transaction"
         android:layout_marginHorizontal="10dp"
-        />
+        android:src="@drawable/ic_transaction"
+        app:layout_constraintBottom_toBottomOf="@id/menuView"
+        app:layout_constraintEnd_toStartOf="@id/accountImageView"
+        app:layout_constraintStart_toEndOf="@id/productImageView"
+        app:layout_constraintTop_toTopOf="@id/menuView" />
 
     <ImageView
         android:id="@+id/accountImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/transactionImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/menuView"
-        app:layout_constraintBottom_toBottomOf="@id/menuView"
-        android:src="@drawable/ic_profile"
         android:layout_marginHorizontal="10dp"
-        />
+        android:src="@drawable/ic_profile"
+        app:layout_constraintBottom_toBottomOf="@id/menuView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/transactionImageView"
+        app:layout_constraintTop_toTopOf="@id/menuView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
