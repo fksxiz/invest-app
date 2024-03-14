@@ -26,7 +26,7 @@ class ListAdapter(private val context:Context): BaseAdapter(){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val item = getItem(position) as News
-        var view = convertView?: LayoutInflater.from(context).inflate(R.layout.news_item,parent,false)
+        val view = convertView?: LayoutInflater.from(context).inflate(R.layout.news_item,parent,false)
         view.apply {
             findViewById<TextView>(R.id.TitleTextView).text = item.title
             findViewById<TextView>(R.id.DescTextView).text = item.text

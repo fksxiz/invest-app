@@ -9,18 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.supabasetest.Common.User
 import com.example.supabasetest.Model.Supabase
 import com.example.supabasetest.R
+import com.example.supabasetest.ViewModel.BaseViewModel
 import com.example.supabasetest.ViewModel.ListAdapter
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class HomeFragment : Fragment() {
 
-    private val supabase:Supabase = Supabase()
+    private val viewModel:BaseViewModel by viewModels()
     private lateinit var helloText:TextView
     private lateinit var newsListView:ListView
+    private var user: User = User()
 
     private lateinit var adapter:ListAdapter
 
@@ -39,6 +43,7 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
     
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.apply {
@@ -47,24 +52,37 @@ class HomeFragment : Fragment() {
         }
         adapter = ListAdapter(requireContext())
         newsListView.adapter = adapter
-        adapter.notifyDataSetChanged()
         getNews()
         setText()
-
+        viewModel.news.observe(viewLifecycleOwner){
+            adapter.news=it
+            adapter.notifyDataSetChanged()
+        }
+        viewModel.user.observe(viewLifecycleOwner){
+            user=it
+            helloText.setText("Welcome, ${user.name?:""}")
+        }
+        adapter.notifyDataSetChanged()
     }
 
     @SuppressLint("SetTextI18n")
     fun setText(){
         lifecycleScope.launch {
-            helloText.setText("Hello, ${supabase.getUser(1).name?:""}")
+
+            viewModel.getUser(1){
+                user=it
+                helloText.setText("Welcome, ${user.name?:""}")
+            }
         }
     }
 
     @SuppressLint("SetTextI18n")
     fun getNews(){
         lifecycleScope.launch {
-            adapter.news = supabase.getNews()
-            adapter.notifyDataSetChanged()
+            viewModel.getNews {
+                adapter.news=it
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 

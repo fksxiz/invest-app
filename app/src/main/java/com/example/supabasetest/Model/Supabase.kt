@@ -16,21 +16,21 @@ class Supabase {
         install(Postgrest)
     }
 
-    suspend fun getUsers(): List<User> {
-        return supabaseClient.postgrest["Users"].select().decodeList<User>()
+    suspend fun getUsers(callback: (List<User>) -> Unit){
+        callback(supabaseClient.postgrest["Users"].select().decodeList<User>())
     }
 
-    suspend fun getUser(id:Int): User {
+    suspend fun getUser(id:Int, callback: (User) -> Unit) {
         val user:User = supabaseClient.postgrest["Users"].select{
             filter {
                 eq("id",id)
             }
         }.decodeSingle<User>()
-        return user
+        callback(user)
     }
 
-    suspend fun getNews():List<News>{
+    suspend fun getNews(callback: (List<News>)->Unit){
         val news = supabaseClient.postgrest["News"].select().decodeList<News>()
-        return news
+        callback(news)
     }
 }

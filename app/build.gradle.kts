@@ -52,6 +52,8 @@ dependencies {
     implementation("io.ktor:ktor-client-android:2.3.9")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
 
 
